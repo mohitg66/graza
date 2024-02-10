@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graza</title>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-orange-100">
+    <header class="text-center text-xs py-4">
+        <p>HI! WE 3 YOU FOR VISITING OUR SITE</p>
+    </header>
+    <hr>
+
+    <div class="flex flex-row relative">
+        <!-- Navbar -->
+        <nav class="flex justify-between gap-x-60 p-4 absolute top-0 left-0 w-full">
+            <div class="w-1/4 align-middle">
+                <a href="#">
+                    <img src="logo.svg" alt="Graza Logo" class="w-32 h-auto">
+                </a>
+            </div>
+            <ul class="flex justify-between w-1/2 align-middle">
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Glog</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Very Cool Subscription</a></li>
+            </ul>
+        </nav>
+
+        <div class="w-1/2 h-screen overflow-hidden" id="herol"></div>
+
+        <div class="w-1/2">
+            <div class="m-10 pt-24 flex flex-col gap-3">
+                <h1 class="text-center text-4xl">
+                    “Drizzle” & “Sizzle”<br> Extra Virgin Olive Oil
+                </h1>
+
+                <p class="text-center">
+                    1573 Reviews
+                </p>
+
+                <div class="bg-white w-4/5 mx-auto border border-black rounded-2xl p-5 flex flex-col gap-y-3 divide-y">
+                    <p>Quantity</p>
+                    <div id="sets-boxes" class="flex flex-row justify-between w-full"></div>
+
+                    <!-- Pricing options -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-row items-center">
+                            <div class="w-4 h-4 border rounded-full mr-3"></div>
+                            <div>One Time Purchase</div>
+                        </div>
+                        <div class="items-center">
+                            <p class="stroke-inherit">$37.30</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center align-middle">
+                        <div class="flex flex-row items-center align-middle">
+                            <div class="w-4 h-4 border rounded-full mr-3"></div>
+                            <div>Subscribe & Save</div>
+                        </div>
+                        <div class="items-center">
+                            <p class="stroke-inherit"><strike>$37</strike> $33.30</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multiple gifts -->
+                <div class="bg-white w-4/5 mx-auto border border-black p-4 rounded-2xl">
+                    <div class="flex items-center justify-center gap-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0550/0003/9638/files/graza-gift-icon.png?v=1705684468" alt="Gift Icon" class="w-10 h-auto">
+                        <p class="text-lg">Buying multiple gifts? Send to multiple addresses here.</p>
+                    </div>
+                </div>
+
+                <!-- Description, Harvest, and Use Cases -->
+                <div class="w-4/5 mx-auto flex">
+                    <button class="w-1/3 mx-auto border border-black p-4 rounded-t-xl text-center focus:outline-none" onclick="toggleSection('description')">Description</button>
+                    <button class="w-1/3 mx-auto border border-black p-4 rounded-t-xl text-center focus:outline-none" onclick="toggleSection('harvest')">Harvest</button>
+                    <button class="w-1/3 mx-auto border border-black p-4 rounded-t-xl text-center focus:outline-none" onclick="toggleSection('use-cases')">Use Cases</button>
+                </div>
+                <div id="description" class="hidden w-4/5 mx-auto border border-black rounded-b-xl">
+                    <p>
+                        <b>DRIZZLE: 500ML</b><br><br>
+                        Extra Virgin finishing oil made from olives that are picked early, when flavor is bold and antioxidants are highest. Made for eating, never heating.<br><br>
+                        <b>SIZZLE: 750ML</b>
+                        Extra Virgin cooking oil made from mature, mid-season olives that yield a more mellow flavor. Use it every day, in every way.
+                    </p>
+                </div>
+
+                <div id="harvest" class="hidden w-4/5 mx-auto border border-black rounded-b-xl">
+                    <!-- Harvested info -->
+                    DRIZZLE:
+Harvested in October, before the olives have ripened fully. Picked by hand because young olives need a firm yank to loosen up.
+
+SIZZLE:
+Harvested in November and December, when the olives are more mature. They’re pretty laid back by this point, so it only takes a few shakes to get them off the branch.
+                </div>
+
+                <div id="use-cases" class="hidden w-4/5 mx-auto border border-black rounded-b-xl">
+                    <!-- Use cases info -->
+                    DRIZZLE:
+A little Drizzle goes a long way! Use it on and around things like ice cream, pesto, popcorn, salads, sandwiches or even directly on your tongue (we won’t tell).
+
+SIZZLE:
+If you would put it in or on top of an oven, use sizzle. Chicken Cutlets, Sheet Pan Veggies, Fried Rice, or even Chocolate Chip Cookies! You name it, Sizzle sizzles it.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Dynamically generate quantity options
+        const setsBoxes = document.getElementById('sets-boxes');
+        const sets = ['1 Set<br>+10% Off', '2 Sets<br>+20% Off', '3 Sets<br>+30% Off', '4 Sets<br>+40% Off'];
+        sets.forEach((set) => {
+            const div = document.createElement('div');
+            div.classList.add('border', 'border-black', 'rounded', 'px-4', 'py-4', 'text-center', 'bg-emerald-200');
+            div.innerHTML = set;
+            setsBoxes.appendChild(div);
+        });
+
+        // Toggle visibility of sections
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section.style.display === "none") {
+                section.style.display = "block";
+            } else {
+                section.style.display = "none";
+            }
+        }
+
+        // Add hero image
+        const herol = document.getElementById('herol');
+        const img = document.createElement('img');
+        img.src = "//www.graza.co/cdn/shop/files/graza-pdp-duo-header-3_2x_caa7f912-38b3-4e36-b928-ed6c036abfc7_720x.jpg?v=1698551972";
+        img.srcset = "//www.graza.co/cdn/shop/files/graza-pdp-duo-header-3_2x_caa7f912-38b3-4e36-b928-ed6c036abfc7_1440x.jpg?v=1698551972 2x";
+        img.alt = "“Drizzle” & “Sizzle”";
+        img.classList.add('aspect-child', 'w-full', 'h-auto', 'object-cover');
+        img.loading = "lazy";
+        herol.appendChild(img);
+    </script>
+</body>
+
+</html>
